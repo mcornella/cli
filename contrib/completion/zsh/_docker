@@ -1581,8 +1581,7 @@ __docker_plugins() {
 
     # Name
     for line in $lines; do
-        s="${line[${begin[NAME]},${end[NAME]}]%% ##}"
-        s="$s:${(l:7:: :::)${${line[${begin[TAG]},${end[TAG]}]}%% ##}}"
+        s="${${line[${begin[NAME]},${end[NAME]}]%% ##}//:/\:}"
         plugins=($plugins $s)
     done
 
